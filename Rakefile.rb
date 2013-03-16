@@ -1,4 +1,4 @@
-task :install => [:npm]
+task :install => [:npm,:createLocalSettings]
 task :default => [:runProgram]
 task :build => [:stopService, :npm, :startService]
 
@@ -6,6 +6,11 @@ task :build => [:stopService, :npm, :startService]
 task :npm do
     sh "npm install"
 end
+
+task :createLocalSettings do
+	
+end
+
 
 task :stopService do
     sh "echo <<pass>> | sudo service <<ServiceName>> stop"
