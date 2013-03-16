@@ -27,14 +27,18 @@ app.get('/', (req, res)->
 app.post('/distance', (req, res)->
     start = req.body.start
     end = req.body.end
+    console.log start
+    console.log end   
     distance = haversine(start, end, unit: 'km').toString()
-    if distance > 0.25
+    console.log distance + " km"
+    console.log new Date().toString()
+    console.log "===================="
+    if distance < 0.25
         text('07886849810', distance + ' km', (err, cb)->
             res.send(distance)
             )
     else
-        res.send(distance)
-    
+        res.send(distance)    
     )
 
 

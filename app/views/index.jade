@@ -1,7 +1,7 @@
 !!! 5
 html
   head
-    title Whats my destination
+    title Am I There Yet?
     meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=false')
     meta(name='apple-mobile-web-app-capable', content='yes')
@@ -20,9 +20,9 @@ html
       function get_fb(){
       var feedback = $.ajax({
       type: "post",
-      data: {pcName: $("#pcName").val()
+      data: {"start":{"latitude":"54.597443","longitude":"-5.934068"},"end":{"latitude":$("#latitude").val(),"longitude":$("#longitude").val()}
       },
-      url: "/query",
+      url: "/distance",
       async: false
       }).responseText;
       $('#result').html(feedback);
@@ -30,10 +30,10 @@ html
   body     
     div(data-role='page')
       header(data-role='header')
-        h1 Enter PC name
+        h1 Enter Co-Ordinates
         hr.divider        
-        input#pcName(type="text", name="pcName")
-        button#submit(type="submit") Search
+        input#latitude(type="text", name="latitude", value="54.5759067", style="width: 48%; float:left; text-align: right")
+        input#longitude(type="text", name="longitude", value="-5.9170547", style="width: 49%; float:right")
+      button#submit(type="submit") How Far
 
-      textarea#result(style='color: black !important;')
-
+      textarea#result(style='color: black !important; font-size:250% !important; text-align:center')
