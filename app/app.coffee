@@ -42,7 +42,7 @@ app.post('/distance', (req, res)->
     )
 
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/distance'));
 
 app.listen(3402)
 console.log('Listening on port 3402')
