@@ -28,9 +28,12 @@ app.post('/distance', (req, res)->
     start = req.body.start
     end = req.body.end
     distance = haversine(start, end, unit: 'km').toString()
-    text('07886849810', 'Hey you', (err, cb)->
+    if distance > 0.25
+        text('07886849810', distance + ' km', (err, cb)->
+            res.send(distance)
+            )
+    else
         res.send(distance)
-        )
     
     )
 
