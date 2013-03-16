@@ -1,5 +1,5 @@
 request = require('superagent')
-settings = require(__dirname + '/../config/config')(__dirname + "/../config/settings.json")
+settings = require(__dirname + '/../config/config')
 
   
 sendText = (sendTo, message, cb) ->
