@@ -11,7 +11,16 @@ START APPLICATION NOW :
 
 haversine = require(__dirname + '/functions/haversine')
 
+app.engine('jade', require('jade').__express);
 app.use(express.bodyParser());
+
+app.set('view options',
+  layout: false
+)
+
+app.get('/', (req, res)->
+    res.render(__dirname + '/views/top.jade')
+    )
 
 app.post('/distance', (req, res)->
     start = req.body.start
@@ -20,7 +29,7 @@ app.post('/distance', (req, res)->
     )
 
 
-
+app.use(express.static(__dirname + '/public'));
 
 app.listen(3402)
 console.log('Listening on port 3402')
