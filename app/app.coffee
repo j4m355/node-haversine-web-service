@@ -14,16 +14,9 @@ haversine = require(__dirname + '/functions/haversine')
 app.use(express.bodyParser());
 
 app.post('/distance', (req, res)->
-    start =
-      latitude: req.body.latitude1
-      longitude: req.body.longitude1
-
-    end =
-      latitude: req.body.latitude2
-      longitude: req.body.longitude2
-
-    distance = haversine(start, end, unit: 'km')
-    res.send(distance.toString())
+    start = req.body.start
+    end = req.body.end
+    res.send(haversine(start, end, unit: 'km').toString())
     )
 
 
