@@ -20,11 +20,11 @@ app.set('view options',
   layout: false
 )
 
-app.get('/', (req, res)->
+app.get('/distance', (req, res)->
     res.render(views + 'index.jade')
     )
 
-app.post('/distance', (req, res)->
+app.post('/distance/distance', (req, res)->
     start = req.body.start
     end = req.body.end
     console.log start
