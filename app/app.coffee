@@ -13,7 +13,16 @@ haversine = require(__dirname + '/functions/haversine')
 
 
 
-app.get('/', (req, res)->
+app.post('/distance', (req, res)->
+	start =
+	  latitude: req.body.latitude1
+	  longitude: req.body.longtitude1
+
+	end =
+	  latitude: req.body.latitude2
+	  longitude: req.body.longtitude2
+
+	res.send haversine(start, end, {unit: 'km'}))
 	)
 
 app.use(express.bodyParser());
@@ -23,14 +32,3 @@ app.listen(3402)
 console.log('Listening on port 3402')
 
 
-###
-Stuff
-###
-applications = {}
-
-ParseApplicationsFromSettings = ()->
-	applications = settings.get("node-app-windows-launcher")
-
-
-
-ParseApplicationsFromSettings()
