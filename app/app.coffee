@@ -21,6 +21,7 @@ app.set('view options',
 )
 
 app.get('/', (req, res)->
+    console.log "gay"
     res.render(views + 'index.jade')
     )
 
