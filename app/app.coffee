@@ -20,11 +20,11 @@ app.set('view options',
   layout: false
 )
 
-app.get('/distance', (req, res)->
+app.get('/', (req, res)->
     res.render(views + 'index.jade')
     )
 
-app.post('/distance/distance', (req, res)->
+app.post('/distance', (req, res)->
     start = req.body.start
     end = req.body.end
     console.log start
@@ -42,7 +42,7 @@ app.post('/distance/distance', (req, res)->
     )
 
 
-app.use(express.static(__dirname + '/public/distance'));
+app.use(express.static(__dirname + '/public'));
 
 app.listen(3402)
 console.log('Listening on port 3402')
