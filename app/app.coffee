@@ -22,7 +22,7 @@ app.post('/distance', (req, res)->
 	  latitude: req.body.latitude2
 	  longitude: req.body.longtitude2
 
-	res.send haversine(start, end, {unit: 'km'}))
+	res.send haversine(start, end, unit: 'km')
 	)
 
 app.use(express.bodyParser());
