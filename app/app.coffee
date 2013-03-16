@@ -22,8 +22,8 @@ app.post('/distance', (req, res)->
       latitude: req.body.latitude2
       longitude: req.body.longitude2
 
-    disnace = haversine(start, end, unit: 'km')
-    res.send(distamce.toString())
+    distance = haversine(start, end, unit: 'km')
+    res.send(distance.toString())
     )
 
 
