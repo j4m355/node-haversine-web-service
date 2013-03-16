@@ -1,0 +1,39 @@
+!!! 5
+html
+  head
+    title Whats my destination
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=false')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    link(rel='stylesheet', href='css/jquery.mobile-1.0.min.css')
+    link(rel='stylesheet', href='css/lightBlue.css')
+    link(href='http://fonts.googleapis.com/css?family=Lobster', rel='stylesheet', type='text/css') 
+    script(type='text/javascript', src='js/jquery.js')
+    script(type='text/javascript', src='js/jquery.mobile-1.0.min.js')
+    script
+      $(document).ready(function(){
+         $("#submit").click(function()
+        {          
+          new get_fb();
+        });
+      });
+      function get_fb(){
+      var feedback = $.ajax({
+      type: "post",
+      data: {pcName: $("#pcName").val()
+      },
+      url: "/query",
+      async: false
+      }).responseText;
+      $('#result').html(feedback);
+      }
+  body     
+    div(data-role='page')
+      header(data-role='header')
+        h1 Enter PC name
+        hr.divider        
+        input#pcName(type="text", name="pcName")
+        button#submit(type="submit") Search
+
+      textarea#result(style='color: black !important;')
+

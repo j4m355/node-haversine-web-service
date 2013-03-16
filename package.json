@@ -10,7 +10,9 @@
     "coffee-script": "~1.4.0",
     "nconf": "~0.6.7",
     "underscore" : "*",
-    "express" : "3.x"
+    "express" : "3.x",
+    "jade" : "*",
+    "superagent" : "*"
   },
   "bin": {
     "placeholder": "./bin/placeholder"

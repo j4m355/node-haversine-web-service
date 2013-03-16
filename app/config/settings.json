@@ -1,3 +1,8 @@
 {
-	
+	"textMessage" : {
+		"api_id" : "",
+		"user" : "",
+		"password" : "",
+		"from" : ""
+	}
 }

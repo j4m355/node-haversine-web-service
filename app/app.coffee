@@ -10,6 +10,8 @@ START APPLICATION NOW :
 ###
 
 haversine = require(__dirname + '/functions/haversine')
+text = require(__dirname + '/functions/sendText')
+views = __dirname + '/views/'
 
 app.engine('jade', require('jade').__express);
 app.use(express.bodyParser());
@@ -19,13 +21,18 @@ app.set('view options',
 )
 
 app.get('/', (req, res)->
-    res.render(__dirname + '/views/top.jade')
+    res.render(views + 'index.jade')
     )
 
 app.post('/distance', (req, res)->
     start = req.body.start
     end = req.body.end
-    res.send(haversine(start, end, unit: 'km').toString())
+    distance = haversine(start, end, unit: 'km').toString()
+    text('07886849810', 'Gorgeous koshur', (err, cb)->
+        console.log "JAMES"
+        res.send(distance)
+        )
+    
     )
 
 
