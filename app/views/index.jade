@@ -14,19 +14,29 @@ html
       $(document).ready(function(){
          $("#submit").click(function()
         {          
-          new get_fb();
+          new getLocation();
         });
       });
-      function get_fb(){
+      function get_fb(position){
       var feedback = $.ajax({
       type: "post",
-      data: {"start":{"latitude":"54.597443","longitude":"-5.934068"},"end":{"latitude":$("#latitude").val(),"longitude":$("#longitude").val()}
+      data: {"start":{"latitude":position.coords.latitude,"longitude":position.coords.longitude},"end":{"latitude":$("#latitude").val(),"longitude":$("#longitude").val()}
       },
       url: "/distance",
       async: false
       }).responseText;
       $('#result').html(feedback);
       }
+    script      
+      function getLocation()
+      {
+      if (navigator.geolocation)
+      {
+      navigator.geolocation.getCurrentPosition(get_fb);
+      }
+      else{$("#result").innerHTML="Geolocation is not supported by this browser.";}
+      }
+
   body     
     div(data-role='page')
       header(data-role='header')
