@@ -38,7 +38,7 @@ app.post('/distance', (req, res)->
             res.send(distance)
             )
     else
-        res.send(distance)    
+        res.send(distance + ' km')    
     )
 
 
