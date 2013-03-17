@@ -13,6 +13,16 @@ haversine = require(__dirname + '/functions/haversine')
 text = require(__dirname + '/functions/sendText')
 views = __dirname + '/views/'
 
+###
+@Database
+###
+mongoose = require("mongoose")
+connection = mongoose.connect "localhost", "distance"
+Customer = require(__dirname + '/schemas/customerSchema')
+###
+@end
+###
+
 app.engine('jade', require('jade').__express);
 app.use(express.bodyParser());
 
