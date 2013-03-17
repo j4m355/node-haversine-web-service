@@ -17,7 +17,7 @@ views = __dirname + '/views/'
 @Database
 ###
 mongoose = require("mongoose")
-connection = mongoose.connect "localhost", "distance"
+mongoose.connect "localhost", "distance"
 Customer = require(__dirname + '/schemas/customerSchema')
 ###
 @end
@@ -35,16 +35,20 @@ app.get('/', (req, res)->
     )
 
 app.post('/customer', (req,res)->
-    customer = new Customer()
-    customer.number = "07886849810"
-    customer.latitude = "54.5759067"
-    customer.longitude = "-5.9170547"
-    customer.save((err)->
-        debugger
-        if err
-            console.log err
-        else
-            res.send(200)
+    customers = req.body.customerSchema
+    errors = []
+    _.each(customers, (singleCustomer)->
+        ###
+        bad idea this - investigate a batch insert
+        ###
+        customer = new Customer()
+        customer.number = singleCustomer.number
+        customer.latitude = singleCustomer.latitude
+        customer.longitude = singleCustomer.longitude
+        customer.save((err)->
+            if err
+                errors.push err
+            )
         )
     )
 
