@@ -15,11 +15,11 @@ views = __dirname + '/views/'
 
 ###
 @Database
-###
+
 mongoose = require("mongoose")
 mongoose.connect "localhost", "distance"
 Customer = require(__dirname + '/schemas/customerSchema')
-###
+
 @end
 ###
 
@@ -34,13 +34,19 @@ app.get('/', (req, res)->
     res.render(views + 'index.jade')
     )
 
+Database = require(__dirname + '/functions/database')
+
 app.post('/customer', (req,res)->
-    customers = req.body.customerSchema
-    errors = []
-    _.each(customers, (singleCustomer)->
-        ###
-        bad idea this - investigate a batch insert
-        ###
+    customers = req.body.customers
+    debugger
+    Database.SaveCustomers(customers, (err, cb)->
+        if err
+            res.send(err)
+        else
+            res.send(200)
+        )
+    ###errors = []
+    _.each(customers, (singleCustomer)->        
         customer = new Customer()
         customer.number = singleCustomer.number
         customer.latitude = singleCustomer.latitude
@@ -49,7 +55,7 @@ app.post('/customer', (req,res)->
             if err
                 errors.push err
             )
-        )
+        )###
     )
 
 app.post('/distance', (req, res)->
