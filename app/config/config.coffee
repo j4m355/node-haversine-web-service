@@ -3,7 +3,7 @@ fs = require('fs')
 
 ###
 To keep settings private store them in _settings.json - these are in the .gitignore. settings.json is just for reference and should be maintained by hand
-Use it if you want though...
+You dont have to use _settings and can delete it if you arent storing anything private
 ###
 
 settings = (->
