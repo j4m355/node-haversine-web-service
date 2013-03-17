@@ -1,19 +1,13 @@
-###
-@Database
-###
+_ = require('underscore')
 mongoose = require("mongoose")
 mongoose.connect "localhost", "distance"
-Customer = require(__dirname + '/schemas/customerSchema')
-###
-@end
-###
+Customer = require(__dirname + '/../schemas/customerSchema')
+
 
 SaveCustomers = (customers, cb)->
-	errors = []
+    errors = []
     _.each(customers, (singleCustomer)->
-        ###
-        bad idea this - investigate a batch insert
-        ###
+        debugger
         customer = new Customer()
         customer.number = singleCustomer.number
         customer.latitude = singleCustomer.latitude
