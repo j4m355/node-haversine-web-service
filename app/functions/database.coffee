@@ -19,6 +19,9 @@ SaveCustomers = (customers, cb)->
             )
 
         )
-    cb(200)
+    if errors.length > 0
+        cb(errors)
+    else
+        cb(200)
 
 exports.SaveCustomers = SaveCustomers
