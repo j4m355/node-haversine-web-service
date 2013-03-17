@@ -12,16 +12,8 @@ START APPLICATION NOW :
 haversine = require(__dirname + '/functions/haversine')
 text = require(__dirname + '/functions/sendText')
 views = __dirname + '/views/'
+Database = require(__dirname + '/functions/database')
 
-###
-@Database
-
-mongoose = require("mongoose")
-mongoose.connect "localhost", "distance"
-Customer = require(__dirname + '/schemas/customerSchema')
-
-@end
-###
 
 app.engine('jade', require('jade').__express);
 app.use(express.bodyParser());
@@ -34,28 +26,15 @@ app.get('/', (req, res)->
     res.render(views + 'index.jade')
     )
 
-Database = require(__dirname + '/functions/database')
 
 app.post('/customer', (req,res)->
     customers = req.body.customers
-    debugger
     Database.SaveCustomers(customers, (err, cb)->
         if err
             res.send(err)
         else
             res.send(200)
         )
-    ###errors = []
-    _.each(customers, (singleCustomer)->        
-        customer = new Customer()
-        customer.number = singleCustomer.number
-        customer.latitude = singleCustomer.latitude
-        customer.longitude = singleCustomer.longitude
-        customer.save((err)->
-            if err
-                errors.push err
-            )
-        )###
     )
 
 app.post('/distance', (req, res)->
