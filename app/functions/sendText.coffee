@@ -3,7 +3,6 @@ settings = require(__dirname + '/../config/config')
 
   
 sendText = (sendTo, message, cb) ->
-  debugger
   request
     .post('http://api.clickatell.com/http/sendmsg')
     .query({api_id : settings.get("textMessage:api_id")})
