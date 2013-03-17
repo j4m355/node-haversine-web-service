@@ -8,6 +8,7 @@ task :npm do
 end
 
 task :createLocalSettings do
+	sh "cp Rakefile.rb _Rakefile.rb"
 	Dir.chdir "app" do
 		Dir.chdir "config" do
 			sh "cp settings.json _settings.json"
