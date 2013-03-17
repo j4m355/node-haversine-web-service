@@ -34,6 +34,20 @@ app.get('/', (req, res)->
     res.render(views + 'index.jade')
     )
 
+app.post('/customer', (req,res)->
+    customer = new Customer()
+    customer.number = "07886849810"
+    customer.latitude = "54.5759067"
+    customer.longitude = "-5.9170547"
+    customer.save((err)->
+        debugger
+        if err
+            console.log err
+        else
+            res.send(200)
+        )
+    )
+
 app.post('/distance', (req, res)->
     units = settings.get('distance:unit')
     start = req.body.start
