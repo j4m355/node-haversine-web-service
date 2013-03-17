@@ -1,8 +1,14 @@
 {
+	"distance" : {
+		"alertDistance" : "0.25",
+		"unit" : "km"
+		},
 	"textMessage" : {
 		"api_id" : "fuck",
 		"user" : "fuck",
 		"password" : "fuck",
-		"from" : "fuck"
-	}
+		"from" : "fuck",
+		"to" : "Butt Face"
+	},
+	"port" : "3402"
 }
