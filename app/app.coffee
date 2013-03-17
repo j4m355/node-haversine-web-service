@@ -25,26 +25,28 @@ app.get('/', (req, res)->
     )
 
 app.post('/distance', (req, res)->
+    units = settings.get('distance:unit')
     start = req.body.start
     end = req.body.end
     console.log start
     console.log end   
-    distance = haversine(start, end, unit: 'km').toString()
-    console.log distance + " km"
+    distance = haversine(start, end, unit: units).toString()
+    console.log distance + units
     console.log new Date().toString()
     console.log "===================="
-    if distance < 0.25
-        text('07886849810', distance + ' km', (err, cb)->
+    if distance < settings.get("distance:alertDistance")
+        text(settings.get("textMessage:to"), distance + units, (err, cb)->
             res.send(distance)
             )
     else
-        res.send(distance + ' km')    
+        res.send(distance + units)    
     )
 
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3402)
-console.log('Listening on port 3402')
+port = settings.get("port")
+app.listen(port)
+console.log('Listening on port ' + port)
 
 
