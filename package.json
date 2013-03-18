@@ -1,6 +1,6 @@
 {
-  "name": "node-app-skeleton",
-  "version": "0.0.0",
+  "name": "node-haversine-web-service",
+  "version": "2.0.0",
   "description": "A useful headstart",
   "main": "index.js",
   "scripts": {
@@ -16,9 +16,6 @@
     "mongoose" : "*",
     "nodemailer" : "*"
   },
-  "bin": {
-    "placeholder": "./bin/placeholder"
-    },
   "repository": "",
   "author": "j4m355",
   "license": "Apache"
