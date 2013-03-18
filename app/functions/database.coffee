@@ -2,6 +2,7 @@ _ = require('underscore')
 mongoose = require("mongoose")
 mongoose.connect "localhost", "distance"
 Customer = require(__dirname + '/../schemas/customerSchema')
+Logger = require(__dirname + '/../schemas/loggerSchema')
 
 
 SaveCustomers = (customers, cb)->
@@ -17,7 +18,6 @@ SaveCustomers = (customers, cb)->
             if err
                 errors.push err
             )
-
         )
     if errors.length > 0
         cb(errors)
@@ -25,3 +25,19 @@ SaveCustomers = (customers, cb)->
         cb(200)
 
 exports.SaveCustomers = SaveCustomers
+
+SaveToLog = (req, additionalInfo, cb)->
+    logger = new Logger()
+    logger.date = new Date()
+    logger.url = req.url
+    logger.method = req.method
+    logger.eventDetails = additionalInfo
+    logger.requestBody = req.body
+    logger.save((err)->
+        if err
+            cb(err)
+        else
+            cb(200)
+            )
+
+exports.SaveToLog = SaveToLog
