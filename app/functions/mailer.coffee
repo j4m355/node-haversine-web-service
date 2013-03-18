@@ -3,6 +3,7 @@ settings = require(__dirname + '/../config/config')
 
 emailSettings = settings.get("email")
 
-transport = nodemailer.createTransport("SMTP",
-	debugger
-	emailSettings)
+transport = nodemailer.createTransport("Sendmail")
+
+debugger
+exports.SendMail = transport.sendMail(emailSettings) 
