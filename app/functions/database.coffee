@@ -14,6 +14,9 @@ SaveCustomers = (customers, cb)->
         customer.latitude = singleCustomer.latitude
         customer.longitude = singleCustomer.longitude
         customer.deliveryDate = singleCustomer.deliveryDate
+        customer.email = singleCustomer.email
+        customer.alerted = false
+        customer.vanId = singleCustomer.vanId
         customer.save((err)->
             if err
                 errors.push err
@@ -25,6 +28,18 @@ SaveCustomers = (customers, cb)->
         cb(200)
 
 exports.SaveCustomers = SaveCustomers
+
+GetCustomersToday = (id, cb)->
+    debugger
+    california = new Customer()
+    Customer.find(vanId : id).exec((err, result)->
+        console.log result
+        console.log result.length
+        cb
+        )
+
+exports.GetCustomersToday = GetCustomersToday
+
 
 SaveToLog = (req, additionalInfo, cb)->
     logger = new Logger()
