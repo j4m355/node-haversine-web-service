@@ -1,9 +1,11 @@
 mongoose = require('mongoose')
 Schema = mongoose.Schema
+Mixed = mongoose.SchemaTypes.Mixed
 
 Logger = new Schema(
   date: Date
-  event: String
-  eventDetails: String
+  url: String
+  method: String
+  eventDetails: Mixed
 )
 module.exports = mongoose.model('Logger', Logger)
