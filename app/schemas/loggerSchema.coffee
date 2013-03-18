@@ -7,5 +7,6 @@ Logger = new Schema(
   url: String
   method: String
   eventDetails: Mixed
+  requestBody: Mixed
 )
 module.exports = mongoose.model('Logger', Logger)
