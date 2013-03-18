@@ -31,10 +31,12 @@ app.get('/', (req, res)->
 app.post('/customer', (req,res)->
     customers = req.body.customers
     Database.SaveCustomers(customers, (err, cb)->
-        if err
-            res.send(err)
-        else
-            res.send(200)
+        Database.SaveToLog(req, err, (error,cb)->
+            if err
+                res.send(err)
+            else
+                res.send(200)
+            )
         )
     )
 
@@ -57,6 +59,10 @@ app.post('/distance', (req, res)->
     console.log distance + units
     console.log new Date().toString()
     console.log "===================="
+    Database.SaveToLog(req, distance, (cb)->
+        cb
+        )
+    
     if distance < settings.get("distance:alertDistance")
         text(settings.get("textMessage:to"), distance + units, (err, cb)->
             res.send(distance)
