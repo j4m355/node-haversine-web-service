@@ -1,4 +1,7 @@
 {
+	"logger" : {
+        
+        },
 	"email": {
         "settings": {
             "host": "",
