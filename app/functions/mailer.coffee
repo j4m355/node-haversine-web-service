@@ -4,13 +4,15 @@ settings = require(__dirname + '/../config/config')
 emailSettings = settings.get("email:settings")
 mailContent = settings.get("email:emailContent")
 
-debugger
 transport = nodemailer.createTransport("SMTP", emailSettings)
 
-SendMail =  (cb)->
-	console.log emailSettings
-	console.log mailContent
-	transport.sendMail(mailContent)
-	cb()
+SendMail =  (email, cb)->
+	mailContent.to = email
+	transport.sendMail(mailContent, (error, responseStatus)->
+		if error
+			cb(error)
+		else
+			cb(200)
+		)
 
 exports.SendMail = SendMail
