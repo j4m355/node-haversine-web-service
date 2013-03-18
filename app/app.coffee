@@ -38,6 +38,15 @@ app.post('/customer', (req,res)->
         )
     )
 
+app.post('/email', (req, res)->
+    Email.SendMail((err,cb)->
+        if err
+            console.log err
+            res.send(err)
+        else
+            res.send(200))
+    )
+
 app.post('/distance', (req, res)->
     units = settings.get('distance:unit')
     start = req.body.start
