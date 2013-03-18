@@ -1,4 +1,12 @@
 {
+	"email" : {
+		"host" : "",
+		"auth" : {
+			"user" : "",
+			"pass" :  ""
+			},
+		"debug" : "true"
+		},
 	"distance" : {
 		"alertDistance" : "0.25",
 		"unit" : "km"
