@@ -1,22 +1,30 @@
 {
-	"email" : {
-		"host" : "",
-		"auth" : {
-			"user" : "",
-			"pass" :  ""
-			},
-		"debug" : "true"
-		},
+	"email": {
+        "settings": {
+            "host": "",
+            "auth": {
+                "user": "",
+                "pass": ""
+            },
+            "debug": "true"
+        },
+        "emailContent": {
+            "from": "",
+            "to": "",
+            "subject": "",
+            "text": ""
+        }
+    },
 	"distance" : {
 		"alertDistance" : "0.25",
 		"unit" : "km"
 		},
 	"textMessage" : {
-		"api_id" : "fuck",
-		"user" : "fuck",
-		"password" : "fuck",
-		"from" : "fuck",
-		"to" : "Butt Face"
+		"api_id" : "",
+		"user" : "",
+		"password" : "",
+		"from" : "",
+		"to" : ""
 	},
 	"port" : "3402"
 }
