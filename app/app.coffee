@@ -13,6 +13,7 @@ haversine = require(__dirname + '/functions/haversine')
 text = require(__dirname + '/functions/sendText')
 views = __dirname + '/views/'
 Database = require(__dirname + '/functions/database')
+Email = require(__dirname + '/functions/mailer')
 
 
 app.engine('jade', require('jade').__express);
