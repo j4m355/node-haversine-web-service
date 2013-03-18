@@ -7,5 +7,6 @@ Customer = new Schema(
   number: String
   vanId : String
   deliveryDate : Date
+  email : String
 )
 module.exports = mongoose.model('Customer', Customer)
