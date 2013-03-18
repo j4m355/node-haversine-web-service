@@ -2,8 +2,14 @@ nodemailer = require("nodemailer")
 settings = require(__dirname + '/../config/config')
 
 emailSettings = settings.get("email")
-
-transport = nodemailer.createTransport("Sendmail")
+mailContent = settings.get("emailContent")
 
 debugger
-exports.SendMail = transport.sendMail(emailSettings) 
+transport = nodemailer.createTransport("SMTP", emailSettings)
+
+SendMail =  (cb)->
+	console.log "dick wad"
+	transport.sendMail(mailContent)
+	cb()
+	
+exports.SendMail = SendMail
