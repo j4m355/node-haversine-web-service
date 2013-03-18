@@ -71,6 +71,12 @@ app.post('/distance', (req, res)->
         res.send(distance + units)    
     )
 
+app.post('/checkin', (req, res)->
+    Database.GetCustomersToday(req.body.id, (err, cb)->
+        cb
+        )
+    )
+
 
 app.use(express.static(__dirname + '/public'));
 
