@@ -39,7 +39,7 @@ app.post('/customer', (req,res)->
     )
 
 app.post('/email', (req, res)->
-    Email.SendMail((err,cb)->
+    Email.SendMail("fake@emailAddress.com", (err,cb)->
         if err
             console.log err
             res.send(err)
